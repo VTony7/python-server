@@ -1,0 +1,26 @@
+# A sample package for security tool evaluation.
+#			2021/11/18 Tony @ JFrog Japan
+
+This is a python script and deployed in the docker image.
+Listen tcp/9999 and execute "ls" via subprocess with the received string from the port.
+The client sees the output of the process from "ls" + the string.
+
+$ docker run -tp 9999:9999 --rm python-server
+
+The container waits for tcp 9999.
+
+At another window, a client sends a string for the argument of the "ls" and sees the output.
+
+$ telnet localhost 9999
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+Input (a) name(s) of file/directory => /
+....
+
+This has the typically command injection vulnerability (and so on).
+
+
+Command injection:
+Input (a) name(s) of file/directory => /; cat /etc/passwd
+

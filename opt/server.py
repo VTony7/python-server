@@ -15,7 +15,7 @@ print("* Listening on %s:%d" % (bind_ip, bind_port))
 
 def handle_client(client_socket):
 	while True:
-		client_socket.send(b"Input the name of file/directory: ")
+		client_socket.send(b"Input (a) name(s) of file/directory => ")
 		request = client_socket.recv(1024).decode().strip()
 		print("* Received: %s" % request)
 		if (request == "end"):
