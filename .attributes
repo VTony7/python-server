@@ -1,0 +1,2 @@
+*.txt diff=myscript
+#script/common/common_file_function.sh diff=myscript
